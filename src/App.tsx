@@ -1,4 +1,5 @@
 import './App.css'
+import Analytics from './components/Analytics'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import ProductsSection from './components/ProductsSection'
@@ -12,6 +13,7 @@ import Footer from './components/Footer'
 function App() {
   return (
     <>
+      <Analytics />
       <Navbar />
       <main>
         <Hero />

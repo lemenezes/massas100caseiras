@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import logoImg from '../assets/logo-massas.png'
 import ThemeToggle from './ThemeToggle'
+import { trackWhatsAppClick, trackMenuOpen } from '../lib/analytics'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -57,6 +58,7 @@ export default function Navbar() {
             target="_blank"
             rel="noopener noreferrer"
             className="ml-2 px-5 py-2 text-sm rounded-full transition-all duration-300 bg-[#A0301A] text-[#FAF6F0] hover:bg-[#BF3E20] shadow-sm"
+            onClick={() => trackWhatsAppClick('navbar_desktop')}
           >
             Pedir pelo WhatsApp
           </a>
@@ -70,7 +72,7 @@ export default function Navbar() {
             className={`flex flex-col gap-1.5 p-2 transition-colors duration-300 ${
               scrolled ? 'text-[#2A2420] dark:text-[#FAF6F0]' : 'text-[#FAF6F0]'
             }`}
-            onClick={() => setMenuOpen(!menuOpen)}
+            onClick={() => { setMenuOpen(!menuOpen); if (!menuOpen) trackMenuOpen() }}
           >
             <span className={`block w-5 h-px bg-current transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-2' : ''}`} />
             <span className={`block w-5 h-px bg-current transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`} />
@@ -100,7 +102,7 @@ export default function Navbar() {
             href="https://wa.me/5531988769796?text=Olá! Vim pelo site e gostaria de fazer um pedido."
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => setMenuOpen(false)}
+            onClick={() => { setMenuOpen(false); trackWhatsAppClick('navbar_mobile') }}
             className="mt-1 px-5 py-2.5 text-sm rounded-full bg-[#A0301A] text-[#FAF6F0] text-center hover:bg-[#BF3E20] transition-colors"
           >
             Pedir pelo WhatsApp

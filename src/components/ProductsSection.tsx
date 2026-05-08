@@ -1,4 +1,5 @@
 import photo3 from '../assets/3.jpg'
+import { trackWhatsAppClick, trackCardapioView } from '../lib/analytics'
 import photo4 from '../assets/4.jpg'
 import photo6 from '../assets/6.jpg'
 import photo7 from '../assets/7.jpg'
@@ -95,6 +96,7 @@ export default function ProductsSection() {
             href="https://wa.me/5531988769796?text=Olá! Gostaria de ver o cardápio completo."
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => { trackWhatsAppClick('cardapio_cta'); trackCardapioView() }}
             className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-[#A0301A] text-[#FAF6F0] text-sm tracking-wide hover:bg-[#BF3E20] transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5"
           >
             Ver cardápio completo no WhatsApp

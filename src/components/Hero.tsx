@@ -1,4 +1,5 @@
 import heroBg from '../assets/5.jpg'
+import { trackWhatsAppClick } from '../lib/analytics'
 
 export default function Hero() {
   return (
@@ -47,6 +48,7 @@ export default function Hero() {
             href="https://wa.me/5531988769796?text=Olá! Gostaria de fazer um pedido."
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackWhatsAppClick('hero')}
             className="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full bg-[#FAF6F0] text-[#A0301A] text-sm font-medium tracking-wide hover:bg-white transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
           >
             <WhatsAppIcon />

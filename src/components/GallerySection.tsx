@@ -1,4 +1,5 @@
 import photo3 from '../assets/3.jpg'
+import { trackInstagramClick } from '../lib/analytics'
 import photo4 from '../assets/4.jpg'
 import photo5 from '../assets/5.jpg'
 import photo6 from '../assets/6.jpg'
@@ -44,7 +45,7 @@ export default function GallerySection() {
 
         {/* Instagram CTA */}
         <div className="text-center mt-8">
-          <a href="https://www.instagram.com/massas100caseiras/" target="_blank" rel="noopener noreferrer" className="text-[#8C7B6B] text-sm font-[family-name:var(--font-sans)] hover:text-[#A0301A] transition-colors">
+          <a href="https://www.instagram.com/massas100caseiras/" target="_blank" rel="noopener noreferrer" onClick={() => trackInstagramClick('gallery')} className="text-[#8C7B6B] text-sm font-[family-name:var(--font-sans)] hover:text-[#A0301A] transition-colors">
             Ver mais no Instagram @massas100caseiras ↗
           </a>
         </div>

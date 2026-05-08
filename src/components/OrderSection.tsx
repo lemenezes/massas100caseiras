@@ -1,3 +1,5 @@
+import { trackWhatsAppClick, trackInstagramClick } from '../lib/analytics'
+
 export default function OrderSection() {
   return (
     <section id="pedidos" className="py-24 md:py-32 bg-[#A0301A] relative overflow-hidden">
@@ -41,6 +43,7 @@ export default function OrderSection() {
           href="https://wa.me/5531988769796?text=Olá! Vim pelo site e gostaria de fazer um pedido."
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => trackWhatsAppClick('order_section')}
           className="animate-pulse-glow inline-flex items-center justify-center gap-3 px-12 py-5 rounded-full bg-[#FAF6F0] text-[#A0301A] text-base font-semibold tracking-wide hover:bg-white hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl"
         >
           <WhatsAppIcon />
@@ -49,7 +52,7 @@ export default function OrderSection() {
 
         <p className="mt-8 text-[#C08050]/70 text-xs font-[family-name:var(--font-sans)]">
           Também atendemos por Instagram:{' '}
-          <a href="https://www.instagram.com/massas100caseiras/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-[#D4B896] transition-colors">
+          <a href="https://www.instagram.com/massas100caseiras/" target="_blank" rel="noopener noreferrer" onClick={() => trackInstagramClick('order_section')} className="underline underline-offset-2 hover:text-[#D4B896] transition-colors">
             @massas100caseiras
           </a>
         </p>

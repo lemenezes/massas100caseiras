@@ -1,4 +1,5 @@
 import logoImg from '../assets/logo-massas.png'
+import { trackWhatsAppClick, trackInstagramClick } from '../lib/analytics'
 
 export default function Footer() {
   const year = new Date().getFullYear()
@@ -54,6 +55,7 @@ export default function Footer() {
                     href="https://wa.me/5531988769796?text=Olá! Gostaria de fazer um pedido."
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => trackWhatsAppClick('footer')}
                     className="text-[#9A8878] text-sm hover:text-[#FAF6F0] transition-colors duration-200 font-[family-name:var(--font-sans)]"
                   >
                     WhatsApp
@@ -64,6 +66,7 @@ export default function Footer() {
                     href="https://www.instagram.com/massas100caseiras/"
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => trackInstagramClick('footer')}
                     className="text-[#9A8878] text-sm hover:text-[#FAF6F0] transition-colors duration-200 font-[family-name:var(--font-sans)]"
                   >
                     Instagram

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { trackThemeChange } from '../lib/analytics'
 
 export default function ThemeToggle({ scrolled }: { scrolled?: boolean }) {
   const [dark, setDark] = useState(() => {
@@ -23,7 +24,7 @@ export default function ThemeToggle({ scrolled }: { scrolled?: boolean }) {
 
   return (
     <button
-      onClick={() => setDark(!dark)}
+      onClick={() => { const next = !dark; setDark(next); trackThemeChange(next ? 'dark' : 'light') }}
       aria-label={dark ? 'Mudar para modo claro' : 'Mudar para modo escuro'}
       className={`w-8 h-8 flex items-center justify-center rounded-full transition-all duration-300 hover:bg-white/10 ${iconColor}`}
     >
