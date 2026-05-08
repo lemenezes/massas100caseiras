@@ -1,53 +1,99 @@
-# React + TypeScript + Vite
+# Massas 100 Caseiras — Site Oficial
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Landing page da **Massas 100 Caseiras**, marca de massas e molhos caseiros com entrega própria em Belo Horizonte.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Stack
 
-## React Compiler
+| Camada | Tecnologia |
+|---|---|
+| UI | React 19 + TypeScript |
+| Build | Vite 8 |
+| Estilo | Tailwind CSS 4 (`@tailwindcss/vite`) |
+| Fontes | Cormorant Garamond + Inter (Google Fonts) |
+| Analytics | Google Analytics 4 + Microsoft Clarity |
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Rodando localmente
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Acesse `http://localhost:5173`.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
+---
+
+## Variáveis de ambiente
+
+Crie um `.env` na raiz com base no `.env.example`:
+
+```bash
+cp .env.example .env
+```
+
+| Variável | Descrição |
+|---|---|
+| `VITE_GA4_ID` | Measurement ID do Google Analytics 4 (ex: `G-XXXXXXXXXX`) |
+| `VITE_CLARITY_ID` | Project ID do Microsoft Clarity (ex: `abcdefghij`) |
+
+Os scripts de analytics só são injetados em produção se as variáveis estiverem preenchidas. Em desenvolvimento local, deixe em branco para não poluir os dados.
+
+---
+
+## Build de produção
+
+```bash
+npm run build
+```
+
+O output vai para `dist/`. Para preview local do build:
+
+```bash
+npm run preview
+```
+
+---
+
+## Estrutura
+
+```
+src/
+  assets/          # Fotos do produto + logo + vídeo
+  components/
+    Analytics.tsx  # Injeta GA4 e Clarity; scroll depth tracking
+    Navbar.tsx
+    Hero.tsx
+    ProductsSection.tsx
+    HowItWorksSection.tsx
+    AboutSection.tsx
+    VideoSection.tsx
+    GallerySection.tsx
+    OrderSection.tsx
+    Footer.tsx
+    ThemeToggle.tsx
+  lib/
+    analytics.ts   # Helpers de event tracking (trackWhatsAppClick, etc.)
+  App.tsx
+  index.css        # Tokens Tailwind 4 + variante dark
+```
+
+---
+
+## Eventos rastreados
+
+| Evento | Onde |
+|---|---|
+| `whatsapp_click` | Navbar, Hero, OrderSection, ProductsSection, Footer |
+| `instagram_click` | OrderSection, GallerySection, Footer |
+| `mobile_menu_open` | Navbar (hamburger) |
+| `theme_change` | ThemeToggle |
+| `cardapio_view` | ProductsSection (link cardápio) |
+| `scroll_depth` | Analytics component (25 / 50 / 75 / 90%) |
+
 import reactDom from 'eslint-plugin-react-dom'
 
 export default defineConfig([
