@@ -1,4 +1,9 @@
-@import "tailwindcss";
+html,
+body,
+#root {
+  overflow-x: hidden;
+  max-width: 100%;
+}
 
 /* Dark mode: ativado pela classe .dark no <html> */
 @variant dark (&:where(.dark, .dark *));
