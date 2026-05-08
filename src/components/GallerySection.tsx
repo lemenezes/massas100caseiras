@@ -4,23 +4,8 @@ import photo5 from '../assets/5.jpg'
 import photo6 from '../assets/6.jpg'
 import photo7 from '../assets/7.jpg'
 import photo8 from '../assets/8.jpg'
-
-interface GalleryItem {
-  src: string
-  label: string
-  size: 'large' | 'small' | 'full'
-}
-
-const galleryItems: GalleryItem[] = [
-  { src: photo3, label: 'Pappardelle rústico', size: 'large' },
-  { src: photo4, label: 'Nhoque artesanal', size: 'small' },
-  { src: photo3, label: 'Tortelli recheado', size: 'small' },
-  { src: photo4, label: 'Pappardelle rústico', size: 'small' },
-  { src: photo5, label: 'Lasanha fresca', size: 'small' },
-  { src: photo6, label: 'Fettuccine negro', size: 'large' },
-  { src: photo7, label: 'Massa sendo preparada', size: 'small' },
-  { src: photo8, label: 'Mesa de família', size: 'full' },
-]
+import photo9 from '../assets/9.jpg'
+import photo10 from '../assets/10.jpg'
 
 export default function GallerySection() {
   return (
@@ -45,33 +30,16 @@ export default function GallerySection() {
           </p>
         </div>
 
-        {/* Grid bento */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
-          {galleryItems.map((item) => (
-            <div
-              key={item.label}
-              className={`group relative overflow-hidden rounded-xl cursor-pointer bg-[#2A2420] ${
-                item.size === 'large'
-                  ? 'md:col-span-2 aspect-[4/3]'
-                  : item.size === 'full'
-                  ? 'col-span-2 md:col-span-3 aspect-[21/9]'
-                  : 'aspect-square'
-              }`}
-            >
-              <img
-                src={item.src}
-                alt={item.label}
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/5 to-transparent opacity-50 group-hover:opacity-80 transition-opacity duration-300" />
-              <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-1 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                <span className="text-[#FAF6F0] font-[family-name:var(--font-sans)] text-xs tracking-[0.2em] uppercase drop-shadow">
-                  {item.label}
-                </span>
-              </div>
-            </div>
-          ))}
+        {/* Grid unificado — desktop: 3 colunas, 4 linhas fixas; mobile: 1 coluna */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 md:[grid-template-rows:320px_320px_320px_220px]">
+          <GalleryCard src={photo8} label="Mesa de família"    className="aspect-[4/3] md:aspect-auto md:col-span-2" />
+          <GalleryCard src={photo3} label="Pappardelle"        className="aspect-[4/3] md:aspect-auto" />
+          <GalleryCard src={photo4} label="Nhoque"             className="aspect-[4/3] md:aspect-auto" />
+          <GalleryCard src={photo9} label="Espaguete ao Forno" className="aspect-[4/3] md:aspect-auto" />
+          <GalleryCard src={photo6} label="Canelone"           className="aspect-[4/3] md:aspect-auto" />
+          <GalleryCard src={photo10} label="Fagotine"          className="aspect-[4/3] md:aspect-auto" />
+          <GalleryCard src={photo7} label="Nossa cozinha"      className="aspect-[4/3] md:aspect-auto md:col-span-2" />
+          <GalleryCard src={photo5} label="Produção do dia"    className="aspect-[16/9] md:aspect-auto md:col-span-3" />
         </div>
 
         {/* Instagram CTA */}
@@ -82,5 +50,24 @@ export default function GallerySection() {
         </div>
       </div>
     </section>
+  )
+}
+
+function GalleryCard({ src, label, className }: { src: string; label: string; className?: string }) {
+  return (
+    <div className={`group relative overflow-hidden rounded-xl cursor-pointer bg-[#2A2420] ${className ?? ''}`}>
+      <img
+        src={src}
+        alt={label}
+        className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+        loading="lazy"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/5 to-transparent opacity-50 group-hover:opacity-80 transition-opacity duration-300" />
+      <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-1 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+        <span className="text-[#FAF6F0] font-[family-name:var(--font-sans)] text-xs tracking-[0.2em] uppercase drop-shadow">
+          {label}
+        </span>
+      </div>
+    </div>
   )
 }

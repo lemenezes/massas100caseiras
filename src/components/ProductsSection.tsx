@@ -70,7 +70,7 @@ export default function ProductsSection() {
             Nossas Massas
           </h2>
           <div className="w-12 h-px bg-[#C96B35] mx-auto mt-6" />
-          <p className="mt-6 text-[#8C7B6B] max-w-md mx-auto text-sm leading-relaxed font-[family-name:var(--font-sans)]">
+          <p className="mt-6 text-[#8C7B6B] max-w-md mx-auto text-sm leading-relaxed font-[family-name:var(--font-sans)] whitespace-nowrap">
             Tudo feito no dia do pedido, com produção própria e sabor de casa.
           </p>
           <div className="flex flex-wrap justify-center gap-2 mt-5">
