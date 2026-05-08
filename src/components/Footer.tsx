@@ -5,9 +5,9 @@ export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="bg-[#2A2420] py-14 px-6">
+    <footer className="bg-[#2A2420] py-10 md:py-14 px-6">
       <div className="max-w-6xl mx-auto">
-        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-10">
+          <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 md:gap-10">
           {/* Brand */}
           <div className="max-w-xs">
             <div className="mb-4">
@@ -74,7 +74,7 @@ export default function Footer() {
                     Instagram
                   </a>
                 </li>
-                <li>
+                <li className="hidden md:block">
                   <a
                     href="tel:+5531988769796"
                     className="text-[#C8B09A] text-sm hover:text-[#FAF6F0] transition-colors duration-200 font-[family-name:var(--font-sans)]"
@@ -82,7 +82,7 @@ export default function Footer() {
                     (31) 98876-9796
                   </a>
                 </li>
-                <li>
+                <li className="hidden md:block">
                   <a
                     href="tel:+5531986457106"
                     className="text-[#C8B09A] text-sm hover:text-[#FAF6F0] transition-colors duration-200 font-[family-name:var(--font-sans)]"
@@ -95,11 +95,11 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 pt-6 border-t border-[#3A302A] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-          <p className="text-[#7A6A5E] text-xs font-[family-name:var(--font-sans)]">
+        <div className="mt-8 md:mt-12 pt-5 border-t border-[#3A302A] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
+          <p className="text-[#5A4A3E] text-xs font-[family-name:var(--font-sans)]">
             © {year} Massas 100 Caseiras. Todos os direitos reservados.
           </p>
-          <p className="text-[#7A6A5E] text-xs font-[family-name:var(--font-sans)]">
+          <p className="hidden sm:block text-[#4A3A30] text-xs font-[family-name:var(--font-sans)]">
             Feito com carinho e farinha de trigo
           </p>
         </div>
