@@ -9,7 +9,7 @@ import photo10 from '../assets/10.jpg'
 interface Product {
   name: string
   description: string
-  price: string
+  cta: string
   tag?: string
   photo: string
 }
@@ -18,39 +18,39 @@ const products: Product[] = [
   {
     name: 'Lasanha',
     description: 'Clássica e bem recheada, com camadas de massa fresca, molho e muçarela gratinada. Sempre muito bem servida.',
-    price: 'R$ 32,00',
     tag: 'Mais Pedido',
+    cta: 'Pedir no WhatsApp',
     photo: photo3,
   },
   {
     name: 'Rondelli',
     description: 'Massa enrolada com recheio generoso. Sabores: presunto e muçarela, quatro queijos, frango, bacalhau, tomate seco e mais.',
-    price: 'a partir de R$ 32,00',
+    cta: 'Ver sabores →',
     photo: photo4,
   },
   {
     name: 'Canelone',
     description: 'Recheado e gratinado. Opções: presunto e muçarela, frango com requeijão, camarão com cream cheese, damasco e provolone.',
-    price: 'a partir de R$ 32,00',
+    cta: 'Quero experimentar',
     photo: photo6,
   },
   {
     name: 'Nhoque',
     description: 'Nhoque caseiro bem fofinho, feito com receita de família. Muito gostoso com qualquer molho.',
-    price: 'R$ 30,00',
     tag: 'Destaque',
+    cta: 'Quero esse',
     photo: photo7,
   },
   {
     name: 'Espaguete ao Forno',
     description: 'Espaguete gratinado com molho e muçarela. Aquele sabor de comida caseira que a gente adora. Ótimo preço.',
-    price: 'R$ 25,00',
+    cta: 'Fazer pedido',
     photo: photo9,
   },
   {
     name: 'Fagotine',
     description: 'Massa recheada em formato de trouxinha. Sabores: palmito, carne seca, quatro queijos, linguiça calabresa e mais.',
-    price: 'a partir de R$ 31,00',
+    cta: 'Ver opções',
     photo: photo10,
   },
 ]
@@ -93,13 +93,13 @@ export default function ProductsSection() {
         {/* CTA */}
         <div className="text-center mt-14">
           <a
-            href="https://wa.me/5531988769796?text=Olá! Gostaria de ver o cardápio completo."
+            href="https://wa.me/5531988769796?text=Olá! Vi o site da Massas 100 Caseiras e gostaria de consultar os sabores e valores 😄"
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => { trackWhatsAppClick('cardapio_cta'); trackCardapioView() }}
             className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-[#A0301A] text-[#FAF6F0] text-sm tracking-wide hover:bg-[#BF3E20] transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5"
           >
-            Ver cardápio completo no WhatsApp
+            Consultar sabores e valores no WhatsApp →
           </a>
         </div>
       </div>
@@ -109,7 +109,7 @@ export default function ProductsSection() {
 
 function ProductCard({ product }: { product: Product }) {
   return (
-    <div className="group relative bg-white dark:bg-[#3D2515] rounded-2xl overflow-hidden border border-[#E8DDD0] dark:border-[#50321E] hover:border-[#C96B35]/40 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+    <div className="group relative flex flex-col bg-white dark:bg-[#3D2515] rounded-2xl overflow-hidden border border-[#E8DDD0] dark:border-[#50321E] hover:border-[#C96B35]/40 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
       {/* Food photo */}
       <div className="relative h-44 overflow-hidden bg-[#2A2420]">
         <img
@@ -127,24 +127,22 @@ function ProductCard({ product }: { product: Product }) {
       </div>
 
       {/* Info */}
-      <div className="p-6">
+      <div className="p-6 flex flex-col flex-1">
         <h3 className="font-[family-name:var(--font-serif)] text-[#2A2420] dark:text-[#FAF6F0] text-xl font-medium mb-2 group-hover:text-[#A0301A] dark:group-hover:text-[#E07840] transition-colors duration-300">
           {product.name}
         </h3>
         <p className="text-[#8C7B6B] dark:text-[#9A7860] text-sm leading-relaxed mb-5 font-[family-name:var(--font-sans)]">
           {product.description}
         </p>
-          <div className="flex items-center justify-between pt-4 border-t border-[#F0E8DE] dark:border-[#50321E]">
-          <span className="text-[#A0301A] font-[family-name:var(--font-serif)] text-base font-semibold">
-            {product.price}
-          </span>
+          <div className="mt-auto pt-4 border-t border-[#F0E8DE] dark:border-[#50321E]">
           <a
-            href="https://wa.me/5531988769796"
+            href="https://wa.me/5531988769796?text=Olá! Vi o site da Massas 100 Caseiras e gostaria de consultar os sabores e valores 😄"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs text-[#8C7B6B] hover:text-[#A0301A] transition-colors tracking-wide font-[family-name:var(--font-sans)]"
+            onClick={() => trackWhatsAppClick('product_card')}
+            className="flex items-center justify-center gap-1.5 w-full py-2 rounded-lg bg-[#A0301A]/[0.07] dark:bg-[#A0301A]/20 text-[#A0301A] dark:text-[#E07840] text-xs tracking-wide font-[family-name:var(--font-sans)] hover:bg-[#A0301A]/[0.13] dark:hover:bg-[#A0301A]/30 transition-colors duration-200"
           >
-            Pedir →
+            {product.cta}
           </a>
         </div>
       </div>
