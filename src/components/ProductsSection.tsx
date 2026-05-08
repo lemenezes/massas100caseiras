@@ -93,7 +93,7 @@ export default function ProductsSection() {
         {/* CTA */}
         <div className="text-center mt-14">
           <a
-            href="https://wa.me/5531988769796?text=Olá! Vi o site da Massas 100 Caseiras e gostaria de consultar os sabores e valores 😄"
+            href="https://wa.me/5531988769796?text=Olá! Vi o site da Massas 100 Caseiras e gostaria de consultar os sabores e valores."
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => { trackWhatsAppClick('cardapio_cta'); trackCardapioView() }}
@@ -136,7 +136,7 @@ function ProductCard({ product }: { product: Product }) {
         </p>
           <div className="mt-auto pt-4 border-t border-[#F0E8DE] dark:border-[#50321E]">
           <a
-            href="https://wa.me/5531988769796?text=Olá! Vi o site da Massas 100 Caseiras e gostaria de consultar os sabores e valores 😄"
+            href="https://wa.me/5531988769796?text=Olá! Vi o site da Massas 100 Caseiras e gostaria de consultar os sabores e valores."
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => trackWhatsAppClick('product_card')}

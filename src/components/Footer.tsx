@@ -98,7 +98,7 @@ export default function Footer() {
             © {year} Massas 100 Caseiras. Todos os direitos reservados.
           </p>
           <p className="text-[#4A3A30] text-xs font-[family-name:var(--font-sans)]">
-            Feito com ❤️ e farinha de trigo
+            Feito com carinho e farinha de trigo
           </p>
         </div>
       </div>
